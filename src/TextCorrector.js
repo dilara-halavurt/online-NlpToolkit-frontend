@@ -9,7 +9,7 @@ const TextCorrector = () => {
   // Function to fetch corrected text from the backend
   const correctText = async (text) => {
     try {
-      const response = await fetch('http://localhost:3001/correct-text', {
+      const response = await fetch('https://starlang-backend-9524056bbd12.herokuapp.com/correct-text', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
