@@ -1,0 +1,67 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* light gray background */
+}
+
+.container {
+  display: flex; /* Changed from grid to flex to align items side by side */
+  justify-content: center; /* Centers the children horizontally */
+  align-items: center; /* Centers the children vertically */
+  height: 100vh;
+  gap: 20px; /* Adds space between the columns */
+}
+
+.column {
+  /* Removed flex-direction and justify-content as it's not needed for side-by-side layout */
+  width: 500px; /* Set width to 500px as requested */
+}
+
+.inputField {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  width: 480px; /* Adjusted width to fit inside the column with padding */
+  height: 500px; /* Set height to 500px as requested */
+  margin-bottom: 20px; /* Space between input fields */
+  box-sizing: border-box; /* Ensures padding and border are included in the total width and height */
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3; /* A darker shade for hover state */
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    height: auto; /* Adjust height to fit content */
+    padding: 0 5px;
+  }
+
+  .column {
+    width: auto; /* Allow columns to adjust to the container's width */
+  }
+
+  .inputField {
+    width: 100%; /* Allow input field to adjust to column's width */
+    height: auto; /* Reset height to default */
+  }
+
+  button {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
