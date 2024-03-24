@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './TextCorrector.css';
 
-const TextCorrector = () => {
+const Deasciifier = () => {
   let [inputText, setInputText] = useState('');
-  let [correctedText, setCorrectedText] = useState('');
+  let [analyzedText, setAnalyzedText] = useState('');
 
   
   // Function to fetch corrected text from the backend
-  const correctText = async (text) => {
+  const resultText = async (text) => {
     try {
-      const response = await fetch('https://starlang-backend-9524056bbd12.herokuapp.com/correct-text', {
+      const response = await fetch('https://starlang-backend-9524056bbd12.herokuapp.com/deasciifier', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -20,7 +20,8 @@ const TextCorrector = () => {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      setCorrectedText(data.correctedText.words.map(word => word.name).join(' ')); // Update the state with the corrected text
+      console.log(data.response)
+      setAnalyzedText(data.asciifiedText.words.map(word => word.name).join(' ')); // Update the state with the corrected text
     } catch (error) {
       console.error('Error correcting text:', error);
     }
@@ -28,8 +29,8 @@ const TextCorrector = () => {
 
   // useEffect hook to log the correctedText state whenever it changes
   useEffect(() => {
-    console.log(correctedText); // Log the current state of correctedText
-  }, [correctedText]); // This effect runs whenever correctedText changes
+    console.log(analyzedText); // Log the current state of correctedText
+  }, [analyzedText]); // This effect runs whenever correctedText changes
 
   const handleTextChange = (event) => {
     const newText = event.target.value;
@@ -37,7 +38,7 @@ const TextCorrector = () => {
   };
   
   const handleCorrectButtonClick = () => {
-    correctText(inputText); // Correctly call the async function without assignment
+    resultText(inputText); // Correctly call the async function without assignment
   };
   
   
@@ -52,12 +53,12 @@ const TextCorrector = () => {
         ></textarea>
     </div>
     <div class="button-wrapper">
-        <button id="correctButton" onClick={handleCorrectButtonClick}>Correct</button>
+        <button id="correctButton" onClick={handleCorrectButtonClick}>Deasciifier</button>
     </div>
     <div class="column">
         <textarea
             className="inputField"
-            value={correctedText}
+            value={analyzedText}
             onChange={handleTextChange}
             placeholder="Type text here..."
         ></textarea>
@@ -69,4 +70,4 @@ const TextCorrector = () => {
 
 
 
-export default TextCorrector;
+export default Deasciifier;

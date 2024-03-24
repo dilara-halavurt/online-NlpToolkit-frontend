@@ -24,11 +24,13 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
-  width: 480px; /* Adjusted width to fit inside the column with padding */
-  height: 500px; /* Set height to 500px as requested */
+  width: 480px; /* Adjust to account for padding, ensuring the total width does not exceed 500px */
+  height: 500px; /* Height as requested */
   margin-bottom: 20px; /* Space between input fields */
   box-sizing: border-box; /* Ensures padding and border are included in the total width and height */
+  resize: none; /* Optional: prevents resizing the textarea */
 }
+
 
 button {
   display: inline-block;
